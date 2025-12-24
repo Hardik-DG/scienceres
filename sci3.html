@@ -1,0 +1,1019 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Science Research Institute</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #194775;
+        }
+
+        .app-container {
+            width: 100%;
+            height: 100%;
+            
+            background: #f8f9fa;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #10122f;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            color: #93c5fd;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #4454ae 0%, #3f46d0 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #1e3a5f;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 0.5rem;
+        }
+
+        /* About Section */
+        .about-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            line-height: 1.8;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-illustration {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .about-illustration {
+                margin: 0 auto;
+            }
+        }
+
+        /* Research Areas */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .research-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+
+        .research-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #3b82f6 0%, #1e3a5f 100%);
+            border-radius: 12px;
+            font-size: 2.5rem;
+        }
+
+        .research-card h3 {
+            color: #3b82f6;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .research-card p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Publications */
+        .publication-list {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .publication-item {
+            padding: 1.5rem;
+            border-left: 4px solid #3b82f6;
+            margin-bottom: 1.5rem;
+            background: #f8f9fa;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .publication-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .publication-icon {
+            width: 50px;
+            height: 50px;
+            background: #3b82f6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .publication-content {
+            flex: 1;
+        }
+
+        .publication-title {
+            font-weight: bold;
+            color: #1e3a5f;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .publication-meta {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .publication-item {
+                grid-template-columns: 1fr;
+            }
+            
+            .publication-icon {
+                margin: 0 auto;
+            }
+        }
+
+        /* Laboratory Section */
+        .lab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .lab-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .lab-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eff6ff;
+            border-radius: 50%;
+            font-size: 2.2rem;
+        }
+
+        .lab-card h3 {
+            color: #3b82f6;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .lab-facilities {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .lab-facilities li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e9ecef;
+            color: #555;
+        }
+
+        .lab-facilities li:last-child {
+            border-bottom: none;
+        }
+
+        .lab-facilities li:before {
+            content: "✓ ";
+            color: #3b82f6;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            background: #3b82f6;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .member-name {
+            font-weight: bold;
+            color: #1e3a5f;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .member-role {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Form */
+        .contact-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            max-width: 600px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e9ecef;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: #3b82f6;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #1e3a5f;
+        }
+
+        .submit-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .form-message.success {
+            background: #d4edda;
+            color: #297ed9;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e3a5f;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="app-container"><!-- Navigation -->
+   <nav class="navbar">
+    <div class="nav-container">
+     <div class="logo" id="site-title">
+      Science Research Institute
+     </div>
+     <ul class="nav-menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#laboratories">Laboratories</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+     </ul>
+    </div>
+   </nav><!-- Hero Section -->
+   <section id="home" class="hero">
+    <h1 id="hero-title">Advancing Scientific Knowledge</h1>
+    <p id="hero-subtitle">Leading the way in groundbreaking research and innovation for a better tomorrow</p>
+   </section><!-- Main Content -->
+   <div class="main-content"><!-- About Section -->
+    <section id="about">
+     <h2 class="section-title" id="about-title">About Our Organization</h2>
+     <div class="about-content">
+      <p id="about-text">The Science Research Institute is a premier organization dedicated to advancing scientific knowledge through innovative research and collaboration. Founded in 2010, we bring together talented researchers from diverse fields to address some of the most pressing challenges facing humanity. Our commitment to excellence, integrity, and collaboration has established us as a leader in the scientific community, producing groundbreaking discoveries that shape the future of science and technology.</p>
+      <div class="about-illustration">
+       🔭
+      </div>
+     </div>
+    </section><!-- Research Areas -->
+    <section id="research">
+     <h2 class="section-title">Research Areas</h2>
+     <div class="research-grid">
+      <div class="research-card">
+       <div class="research-icon">
+        🧬
+       </div>
+       <h3>Biotechnology</h3>
+       <p>Exploring genetic engineering, protein synthesis, and cellular mechanisms to develop new medical treatments and sustainable agricultural solutions.</p>
+      </div>
+      <div class="research-card">
+       <div class="research-icon">
+        🌍
+       </div>
+       <h3>Environmental Science</h3>
+       <p>Investigating climate change, ecosystem dynamics, and sustainable resource management to protect our planet for future generations.</p>
+      </div>
+      <div class="research-card">
+       <div class="research-icon">
+        ⚛️
+       </div>
+       <h3>Quantum Physics</h3>
+       <p>Advancing our understanding of quantum mechanics, particle behavior, and developing next-generation computing technologies.</p>
+      </div>
+      <div class="research-card">
+       <div class="research-icon">
+        🔬
+       </div>
+       <h3>Materials Science</h3>
+       <p>Discovering and designing new materials with unique properties for applications in energy, electronics, and construction.</p>
+      </div>
+      <div class="research-card">
+       <div class="research-icon">
+        🧠
+       </div>
+       <h3>Neuroscience</h3>
+       <p>Studying brain function, neural networks, and cognitive processes to unlock the mysteries of human consciousness and behavior.</p>
+      </div>
+      <div class="research-card">
+       <div class="research-icon">
+        ⚡
+       </div>
+       <h3>Renewable Energy</h3>
+       <p>Developing innovative solutions for clean energy production, storage, and distribution to combat climate change.</p>
+      </div>
+     </div>
+    </section><!-- Publications -->
+    <section id="publications">
+     <h2 class="section-title">Recent Publications</h2>
+     <div class="publication-list">
+      <div class="publication-item">
+       <div class="publication-icon">
+        📄
+       </div>
+       <div class="publication-content">
+        <div class="publication-title">
+        <a href="https://e-neurospine.org/journal/view.php?doi=10.14245/ns.2550462.231">
+        " Advances in CRISPR Gene Editing Techniques for Therapeutic Applications</a>
+        </div>
+        <div class="publication-meta">
+         Dr. Sarah Johnson, Dr. Michael Chen | Nature Biotechnology | 2024
+        </div>
+       </div>
+      </div>
+      <div class="publication-item">
+       <div class="publication-icon">
+        📄
+       </div>
+       <div class="publication-content">
+        <div class="publication-title">
+         Climate Modeling and Predictive Analysis of Arctic Ice Sheet Dynamics
+        </div>
+        <div class="publication-meta">
+         Dr. Emily Rodriguez, Dr. James Anderson | Science | 2024
+        </div>
+       </div>
+      </div>
+      <div class="publication-item">
+       <div class="publication-icon">
+        📄
+       </div>
+       <div class="publication-content">
+        <div class="publication-title">
+         Quantum Entanglement in Multi-Particle Systems: New Theoretical Framework
+        </div>
+        <div class="publication-meta">
+         Dr. David Kim, Dr. Lisa Thompson | Physical Review Letters | 2023
+        </div>
+       </div>
+      </div>
+      <div class="publication-item">
+       <div class="publication-icon">
+        📄
+       </div>
+       <div class="publication-content">
+        <div class="publication-title">
+         Graphene-Based Nanocomposites for Energy Storage Applications
+        </div>
+        <div class="publication-meta">
+         Dr. Robert Martinez, Dr. Anna Petrov | Advanced Materials | 2023
+        </div>
+       </div>
+      </div>
+      <div class="publication-item">
+       <div class="publication-icon">
+        📄
+       </div>
+       <div class="publication-content">
+        <div class="publication-title">
+         Neural Correlates of Decision-Making in Complex Social Environments
+        </div>
+        <div class="publication-meta">
+         Dr. Jennifer Lee, Dr. Thomas Brown | Neuron | 2023
+        </div>
+       </div>
+      </div>
+      <div class="publication-item">
+       <div class="publication-icon">
+        📄
+       </div>
+       <div class="publication-content">
+        <div class="publication-title">
+         Next-Generation Perovskite Solar Cells: Efficiency and Stability Improvements
+        </div>
+        <div class="publication-meta">
+         Dr. Mohammed Ahmed, Dr. Claire Wilson | Energy &amp; Environmental Science | 2023
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Laboratories -->
+    <section id="laboratories">
+     <h2 class="section-title">Our Laboratories</h2>
+     <div class="lab-grid">
+      <div class="lab-card">
+       <div class="lab-icon">
+        🧪
+       </div>
+       <h3>Molecular Biology Lab</h3>
+       <p>State-of-the-art facility for genetic research and molecular analysis.</p>
+       <ul class="lab-facilities">
+        <li>PCR and qPCR equipment</li>
+        <li>DNA sequencing systems</li>
+        <li>Cell culture facilities</li>
+        <li>Microscopy suite</li>
+        <li>Gene editing tools</li>
+       </ul>
+      </div>
+      <div class="lab-card">
+       <div class="lab-icon">
+        🌿
+       </div>
+       <h3>Environmental Testing Lab</h3>
+       <p>Advanced equipment for environmental monitoring and analysis.</p>
+       <ul class="lab-facilities">
+        <li>Mass spectrometry</li>
+        <li>Water quality analyzers</li>
+        <li>Air pollution monitors</li>
+        <li>Soil testing equipment</li>
+        <li>Climate simulation chambers</li>
+       </ul>
+      </div>
+      <div class="lab-card">
+       <div class="lab-icon">
+        💻
+       </div>
+       <h3>Quantum Computing Lab</h3>
+       <p>Cutting-edge quantum research and computation facility.</p>
+       <ul class="lab-facilities">
+        <li>Quantum processors</li>
+        <li>Cryogenic systems</li>
+        <li>High-performance computing cluster</li>
+        <li>Laser spectroscopy equipment</li>
+        <li>Superconducting circuits</li>
+       </ul>
+      </div>
+      <div class="lab-card">
+       <div class="lab-icon">
+        🔭
+       </div>
+       <h3>Materials Characterization Lab</h3>
+       <p>Comprehensive facility for materials analysis and testing.</p>
+       <ul class="lab-facilities">
+        <li>Electron microscopes (SEM/TEM)</li>
+        <li>X-ray diffraction systems</li>
+        <li>Thermal analysis equipment</li>
+        <li>Mechanical testing machines</li>
+        <li>Spectroscopy instruments</li>
+       </ul>
+      </div>
+     </div>
+    </section><!-- Team -->
+    <section id="team">
+     <h2 class="section-title">Our Research Team</h2>
+     <div class="team-grid">
+      <div class="team-member">
+       <div class="member-avatar">
+        👨‍🔬
+       </div>
+       <div class="member-name">
+        Dr. Sarah Johnson
+       </div>
+       <div class="member-role">
+        Director of Biotechnology
+       </div>
+      </div>
+      <div class="team-member">
+       <div class="member-avatar">
+        👨‍🔬
+       </div>
+       <div class="member-name">
+        Dr. Michael Chen
+       </div>
+       <div class="member-role">
+        Senior Research Scientist
+       </div>
+      </div>
+      <div class="team-member">
+       <div class="member-avatar">
+        👩‍🔬
+       </div>
+       <div class="member-name">
+        Dr. Emily Rodriguez
+       </div>
+       <div class="member-role">
+        Environmental Sciences Lead
+       </div>
+      </div>
+      <div class="team-member">
+       <div class="member-avatar">
+        👨‍🔬
+       </div>
+       <div class="member-name">
+        Dr. David Kim
+       </div>
+       <div class="member-role">
+        Quantum Physics Researcher
+       </div>
+      </div>
+      <div class="team-member">
+       <div class="member-avatar">
+        👩‍🔬
+       </div>
+       <div class="member-name">
+        Dr. Lisa Thompson
+       </div>
+       <div class="member-role">
+        Materials Science Specialist
+       </div>
+      </div>
+      <div class="team-member">
+       <div class="member-avatar">
+        👨‍🔬
+       </div>
+       <div class="member-name">
+        Dr. James Anderson
+       </div>
+       <div class="member-role">
+        Climate Research Scientist
+       </div>
+      </div>
+      <div class="team-member">
+       <div class="member-avatar">
+        👩‍🔬
+       </div>
+       <div class="member-name">
+        Dr. Jennifer Lee
+       </div>
+       <div class="member-role">
+        Neuroscience Researcher
+       </div>
+      </div>
+      <div class="team-member">
+       <div class="member-avatar">
+        👨‍🔬
+       </div>
+       <div class="member-name">
+        Dr. Robert Martinez
+       </div>
+       <div class="member-role">
+        Energy Systems Engineer
+       </div>
+      </div>
+     </div>
+    </section><!-- Contact -->
+    <section id="contact">
+     <h2 class="section-title" id="contact-title">Contact Us</h2>
+     <div class="contact-content">
+      <div style="text-align: center; font-size: 3rem; margin-bottom: 1rem;">
+       📧
+      </div>
+      <p style="margin-bottom: 1.5rem;">Have questions or want to collaborate? Send us a message and we'll get back to you soon.</p>
+      <p style="margin-bottom: 2rem; color: #666;">Email: <span id="contact-email">research@scienceinstitute.org</span></p>
+      <form id="contact-form">
+       <div class="form-group"><label for="name">Name</label> <input type="text" id="name" name="name" required>
+       </div>
+       <div class="form-group"><label for="email">Email</label> <input type="email" id="email" name="email" required>
+       </div>
+       <div class="form-group"><label for="subject">Subject</label> <input type="text" id="subject" name="subject" required>
+       </div>
+       <div class="form-group"><label for="message">Message</label> <textarea id="message" name="message" required></textarea>
+       </div><button type="submit" class="submit-btn" id="submit-btn">Send Message</button>
+       <div class="form-message" id="form-message"></div>
+      </form>
+     </div>
+    </section>
+   </div><!-- Footer -->
+   <footer class="footer">
+    <p>MADE BY HARDIK GAVALI </p>
+   </footer>
+  </div>
+  <script>
+        const defaultConfig = {
+            site_title: "Science Research Institute",
+            hero_title: "Advancing Scientific Knowledge",
+            hero_subtitle: "Leading the way in groundbreaking research and innovation for a better tomorrow",
+            about_title: "About Our Organization",
+            about_text: "The Science Research Institute is a premier organization dedicated to advancing scientific knowledge through innovative research and collaboration. Founded in 2010, we bring together talented researchers from diverse fields to address some of the most pressing challenges facing humanity. Our commitment to excellence, integrity, and collaboration has established us as a leader in the scientific community, producing groundbreaking discoveries that shape the future of science and technology.",
+            contact_title: "Contact Us",
+            contact_email: "research@scienceinstitute.org",
+            background_color: "#f8f9fa",
+            primary_color: "#1a472a",
+            secondary_color: "#ffffff",
+            text_color: "#2c3e50",
+            accent_color: "#2c5f3f",
+            font_family: "Segoe UI",
+            font_size: 16
+        };
+
+        async function onConfigChange(config) {
+            const customFont = config.font_family || defaultConfig.font_family;
+            const baseFontStack = 'Tahoma, Geneva, Verdana, sans-serif';
+            const baseSize = config.font_size || defaultConfig.font_size;
+
+            document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+            document.body.style.fontSize = `${baseSize}px`;
+
+            document.querySelector('.app-container').style.background = config.background_color || defaultConfig.background_color;
+            
+            document.querySelectorAll('.navbar').forEach(el => {
+                el.style.background = config.primary_color || defaultConfig.primary_color;
+            });
+
+            document.querySelectorAll('.hero').forEach(el => {
+                el.style.background = `linear-gradient(135deg, ${config.accent_color || defaultConfig.accent_color} 0%, ${config.primary_color || defaultConfig.primary_color} 100%)`;
+            });
+
+            document.querySelectorAll('.about-content, .research-card, .publication-list, .lab-card, .team-member, .contact-content').forEach(el => {
+                el.style.background = config.secondary_color || defaultConfig.secondary_color;
+            });
+
+            document.querySelectorAll('.section-title').forEach(el => {
+                el.style.color = config.primary_color || defaultConfig.primary_color;
+                el.style.borderBottomColor = config.accent_color || defaultConfig.accent_color;
+            });
+
+            document.querySelectorAll('.research-card h3, .lab-card h3, .member-name, .publication-title').forEach(el => {
+                el.style.color = config.accent_color || defaultConfig.accent_color;
+            });
+
+            document.body.style.color = config.text_color || defaultConfig.text_color;
+
+            document.querySelectorAll('.submit-btn').forEach(el => {
+                el.style.background = config.accent_color || defaultConfig.accent_color;
+            });
+
+            document.querySelectorAll('.footer').forEach(el => {
+                el.style.background = config.primary_color || defaultConfig.primary_color;
+            });
+
+            document.querySelectorAll('.member-avatar').forEach(el => {
+                el.style.background = config.accent_color || defaultConfig.accent_color;
+            });
+
+            document.querySelectorAll('.publication-item').forEach(el => {
+                el.style.borderLeftColor = config.accent_color || defaultConfig.accent_color;
+            });
+
+            document.querySelectorAll('.publication-icon').forEach(el => {
+                el.style.background = config.accent_color || defaultConfig.accent_color;
+            });
+
+            document.querySelectorAll('.research-icon').forEach(el => {
+                el.style.background = `linear-gradient(135deg, ${config.accent_color || defaultConfig.accent_color} 0%, ${config.primary_color || defaultConfig.primary_color} 100%)`;
+            });
+
+            document.querySelectorAll('.lab-icon').forEach(el => {
+                el.style.background = config.background_color || defaultConfig.background_color;
+            });
+
+            document.querySelectorAll('.lab-facilities li:before').forEach(el => {
+                el.style.color = config.accent_color || defaultConfig.accent_color;
+            });
+
+            document.getElementById('site-title').textContent = config.site_title || defaultConfig.site_title;
+            document.getElementById('hero-title').textContent = config.hero_title || defaultConfig.hero_title;
+            document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+            document.getElementById('about-title').textContent = config.about_title || defaultConfig.about_title;
+            document.getElementById('about-text').textContent = config.about_text || defaultConfig.about_text;
+            document.getElementById('contact-title').textContent = config.contact_title || defaultConfig.contact_title;
+            document.getElementById('contact-email').textContent = config.contact_email || defaultConfig.contact_email;
+
+            document.querySelector('.hero h1').style.fontSize = `${baseSize * 2.5}px`;
+            document.querySelector('.hero p').style.fontSize = `${baseSize * 1.2}px`;
+            document.querySelectorAll('.section-title').forEach(el => {
+                el.style.fontSize = `${baseSize * 2}px`;
+            });
+            document.querySelectorAll('.research-card h3, .lab-card h3').forEach(el => {
+                el.style.fontSize = `${baseSize * 1.3}px`;
+            });
+            document.querySelectorAll('.member-name').forEach(el => {
+                el.style.fontSize = `${baseSize * 1.2}px`;
+            });
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [
+                        {
+                            get: () => config.background_color || defaultConfig.background_color,
+                            set: (value) => {
+                                config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.secondary_color || defaultConfig.secondary_color,
+                            set: (value) => {
+                                config.secondary_color = value;
+                                window.elementSdk.setConfig({ secondary_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.text_color || defaultConfig.text_color,
+                            set: (value) => {
+                                config.text_color = value;
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.primary_color || defaultConfig.primary_color,
+                            set: (value) => {
+                                config.primary_color = value;
+                                window.elementSdk.setConfig({ primary_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.accent_color || defaultConfig.accent_color,
+                            set: (value) => {
+                                config.accent_color = value;
+                                window.elementSdk.setConfig({ accent_color: value });
+                            }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: {
+                        get: () => config.font_family || defaultConfig.font_family,
+                        set: (value) => {
+                            config.font_family = value;
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    },
+                    fontSizeable: {
+                        get: () => config.font_size || defaultConfig.font_size,
+                        set: (value) => {
+                            config.font_size = value;
+                            window.elementSdk.setConfig({ font_size: value });
+                        }
+                    }
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ["site_title", config.site_title || defaultConfig.site_title],
+                    ["hero_title", config.hero_title || defaultConfig.hero_title],
+                    ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+                    ["about_title", config.about_title || defaultConfig.about_title],
+                    ["about_text", config.about_text || defaultConfig.about_text],
+                    ["contact_title", config.contact_title || defaultConfig.contact_title],
+                    ["contact_email", config.contact_email || defaultConfig.contact_email]
+                ])
+            });
+        }
+
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const formMessage = document.getElementById('form-message');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            setTimeout(() => {
+                formMessage.className = 'form-message success';
+                formMessage.style.display = 'block';
+                formMessage.textContent = 'Thank you for your message! We will get back to you soon.';
+                
+                document.getElementById('contact-form').reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+                
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            }, 1000);
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b2e2206325884d1',t:'MTc2NjU1ODY5NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
